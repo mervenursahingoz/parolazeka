@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.1em;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
+    background-color: #ffcccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+    background-color: #ccffcc;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Parola gücü çubuğu */
+.password-strength {
+    margin-top: 10px;
+}
+
+.strength-bar {
+    height: 20px;
+    border-radius: 10px;
+    background-color: #e0e0e0;
+    transition: width 0.3s ease-in-out;
+}
+
+.low {
+    width: 33%;
+    background-color: red;
+}
+
+.medium {
+    width: 66%;
+    background-color: yellow;
+}
+
+.high {
+    width: 100%;
+    background-color: green;
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    input[type="text"], button {
+        font-size: 0.9em;
+    }
+
+    .password-strength {
+        font-size: 0.9em;
+    }
+}
