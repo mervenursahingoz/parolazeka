@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parola Gücü ve Kırılabilirlik Analizi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Parola Gücü ve Kırılabilirlik Analizi</h1>
+        <form method="POST">
+            <label for="parola">Şifrenizi Girin:</label>
+            <input type="text" id="parola" name="parola" placeholder="Şifrenizi buraya girin" required>
+            <button type="submit">Analiz Et</button>
+        </form>
+
+        {% if parola %}
+        <div class="result">
+            <h2>Sonuçlar:</h2>
+            <p><strong>Girilen Şifre:</strong> {{ parola }}</p>
+            <p><strong>Entropi:</strong> {{ entropi }} bit</p>
+            <p><strong>Şifrenin Kırılma Süresi:</strong> {{ kirilma_suresi }}</p>
+
+            <!-- Şifre gücü skoru göstergesi -->
+            <div class="password-strength">
+                <p><strong>Şifre Gücü: {{ güç_skoru }}</strong></p>
+                <div class="strength-bar" style="width: {{ strength_percent }}%; background-color: {{ strength_color }};"></div>
+            </div>
+
+            {% if zayif %}
+                <p class="warning">Bu şifre çok zayıf! Lütfen daha güçlü bir şifre seçin.</p>
+                <p><strong>Önerilen Güçlü Şifre:</strong> 
+                    <span id="recommended-password">{{ önerilen_şifre }}</span>
+                    <button type="button" onclick="copyToClipboard()">Kopyala</button>
+                </p>
+            {% else %}
+                <p class="success">Şifre güçlü görünüyor!</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+    function copyToClipboard() {
+        var password = document.getElementById("recommended-password").textContent;
+        navigator.clipboard.writeText(password).then(function() {
+            alert("Şifre kopyalandı!");
+        });
+    }
+    </script>
+</body>
+</html>
